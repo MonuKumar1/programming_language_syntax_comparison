@@ -1,0 +1,45 @@
+Configure Swagger in Your application
+
+Kindly add below dependency in your pom.xml 
+-----------------------------------------------------
+
+<groupId>org.springdoc</groupId>
+<artifactId>springdoc-openapi-ui</artifactId>
+<version>1.6.3</version>
+</dependency>
+
+----------------------------------------------------
+Update your main Application file with below code.
+-------------------------------------------------------
+
+package com.scb.samplecrud;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+
+@SpringBootApplication
+public class SampleCrudApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SampleCrudApplication.class, args);
+	}
+
+	@Bean
+	public OpenAPI customOpenApi() {
+
+		return new OpenAPI().components(new Components())
+				.info(new Info().title("Spring Boot Rest APIs")
+						.description("Springboot framework").version("1.0"));
+
+	}
+}
+
+=============================================================================================
+Save All files. Start your application and access below link in the browser.
+
+http://localhost:8081/swagger-ui/index.html
